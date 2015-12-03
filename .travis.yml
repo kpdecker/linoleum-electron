@@ -3,8 +3,6 @@ sudo: false
 script: gulp travis
 node_js:
   - "4"
-env:
-  - KARMA_BROWSER=Firefox
 
 before_script:
   - export DISPLAY=:99.0
