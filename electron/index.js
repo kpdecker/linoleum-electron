@@ -1,7 +1,5 @@
 /* eslint-disable no-console */
-import App from 'app';
-import BrowserWindow from 'browser-window';
-import ipc from 'ipc';
+import {app, BrowserWindow, ipcMain} from 'electron';
 
 import {Collector, Report} from 'istanbul';
 import mkdirp from 'mkdirp';
@@ -25,14 +23,14 @@ process.on('uncaughtException', (error) => {
   process.exit(255);
 });
 
-App.on('window-all-closed', function() {
-  App.quit();
+app.on('window-all-closed', function() {
+  app.quit();
 });
-App.on('quit', function() {
+app.on('quit', function() {
   process.exit(failures);
 });
 
-App.on('ready', function() {
+app.on('ready', function() {
   mainWindow = new BrowserWindow({show: false, width: 800, height: 600});
 
   mainWindow.webContents.on('dom-ready', function() {
@@ -49,21 +47,21 @@ App.on('ready', function() {
     });
   });
 
-  mainWindow.loadUrl(`file://${__dirname}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   ['log', 'error', 'warn', 'debug'].forEach((type) => {
-    ipc.on(type, function(event, args) {
+    ipcMain.on(type, function(event, args) {
       /* eslint-disable no-console */
       (console[type] || console.log)(...args);
     });
   });
 
-  ipc.on('done', function(event, rendererFailures, coverage) {
+  ipcMain.on('done', function(event, rendererFailures, coverage) {
     failures += rendererFailures;
     writeCoverage(global.__coverage__, coverage);
 
     mainWindow.close();
-    App.quit();
+    app.quit();
   });
   mainWindow.on('closed', function() {
     mainWindow = null;

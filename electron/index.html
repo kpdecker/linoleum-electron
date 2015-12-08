@@ -8,7 +8,7 @@
     <script type="text/javascript">
       /* global window, mocha */
       /* eslint-disable no-trailing-spaces, no-console, no-var, eol-last, prefer-template */
-      var ipc = require('ipc');
+      var ipcRenderer = require('electron').ipcRenderer;
 
       ['log', 'error', 'warn', 'debug'].forEach(function(type) {
         console[type] = function() {
@@ -16,7 +16,7 @@
           for (var i = 0; i < arguments.length; i++) {
             args[i] = arguments[i];
           }
-          ipc.send(type, args);
+          ipcRenderer.send(type, args);
         };
       });
 
@@ -24,18 +24,18 @@
         console.log('uncaught renderer error', message, file + ':' + line);
       };
 
-      ipc.on('exec', function(tests) {
+      ipcRenderer.on('exec', function(event, tests) {
         try {
           require(tests);
 
           console.log('Running renderer tests');
           mocha.run(function(failures) {
 
-            ipc.send('done', failures, window.__coverage__);
+            ipcRenderer.send('done', failures, window.__coverage__);
           });
         } catch (err) {
           console.log(err.stack);
-          ipc.send('done', 255);
+          ipcRenderer.send('done', 255);
         }
       });
 
