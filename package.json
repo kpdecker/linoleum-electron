@@ -1,5 +1,5 @@
 {
-  "name": "linoleum-electron",
+  "name": "@kpdecker/linoleum-electron",
   "version": "0.0.0",
   "description": "Shared javascript build and testing infrastructure",
   "main": "index.js",
@@ -16,7 +16,6 @@
     "url": "https://github.com/kpdecker/linoleum-electron/issues"
   },
   "homepage": "https://github.com/kpdecker/linoleum-electron#readme",
-  "private": true,
   "dependencies": {
     "@kpdecker/linoleum-webpack": "^1.0.0",
     "electron-prebuilt": "^0.35.4",
