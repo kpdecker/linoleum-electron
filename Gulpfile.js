@@ -1,6 +1,6 @@
 var Gulp = require('gulp'),
 
-    Linoleum = require('linoleum');
+    Linoleum = require('@kpdecker/linoleum');
 
 require('./index');
 
@@ -19,4 +19,4 @@ Gulp.task('travis', function(done) {
 });
 Gulp.task('default', ['cover']);
 
-require('linoleum/Gulpfile.local');
+require('@kpdecker/linoleum/Gulpfile.local');

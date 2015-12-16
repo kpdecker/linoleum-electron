@@ -1,6 +1,6 @@
 import Gulp from 'gulp';
 
-import {BUILD_TARGET, COVERAGE_TARGET} from 'linoleum/index';
+import {BUILD_TARGET, COVERAGE_TARGET} from '@kpdecker/linoleum/config';
 
 import {spawn} from 'child_process';
 import {resolve} from 'path';
@@ -8,7 +8,7 @@ import electronPath from 'electron-prebuilt';
 
 Gulp.task('cover:electron', function(done) {
   spawn(electronPath, [
-      `-r`, require.resolve('linoleum/runtime-init'),
+      `-r`, require.resolve('@kpdecker/linoleum/runtime-init'),
       resolve(`${__dirname}/../electron/index.js`),
       resolve(`${BUILD_TARGET}/$cover$/main.js`),
       resolve(`${BUILD_TARGET}/$cover$/renderer.js`),

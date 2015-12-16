@@ -27,14 +27,14 @@
     "webpack": "^1.12.2"
   },
   "devDependencies": {
+    "@kpdecker/linoleum": "^1.0.1",
     "chai": "^3.3.0",
     "gulp": "^3.9.0",
-    "linoleum": "kpdecker/linoleum",
     "sinon": "^1.17.0"
   },
   "eslintConfig": {
     "extends": [
-      "linoleum"
+      "@kpdecker/eslint-config-linoleum"
     ],
     "root": true
   }

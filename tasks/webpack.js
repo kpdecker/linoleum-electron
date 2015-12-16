@@ -2,7 +2,7 @@ import Gulp from 'gulp';
 import GUtil from 'gulp-util';
 import webpack from 'webpack';
 
-import {BUILD_TARGET, WATCHING} from 'linoleum/index';
+import {BUILD_TARGET, WATCHING} from '@kpdecker/linoleum/config';
 import loadWebpackConfig from '../src/webpack';
 
 Gulp.task('webpack:electron', function(done) {
