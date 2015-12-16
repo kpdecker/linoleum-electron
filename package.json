@@ -18,10 +18,10 @@
   "homepage": "https://github.com/kpdecker/linoleum-electron#readme",
   "private": true,
   "dependencies": {
+    "@kpdecker/linoleum-webpack": "^1.0.0",
     "electron-prebuilt": "^0.35.4",
     "gulp-util": "^3.0.6",
     "istanbul": "kpdecker/istanbul",
-    "linoleum-webpack": "kpdecker/linoleum-webpack",
     "mkdirp": "^0.5.1",
     "mocha": "^2.3.3",
     "webpack": "^1.12.2"

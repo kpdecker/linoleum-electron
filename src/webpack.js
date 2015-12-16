@@ -1,4 +1,4 @@
-import webpackConfig, {nodeExternals} from 'linoleum-webpack/src/webpack';
+import webpackConfig, {nodeExternals} from '@kpdecker/linoleum-webpack/src/webpack';
 
 export default function(options = {}) {
   let ret = webpackConfig(options);
